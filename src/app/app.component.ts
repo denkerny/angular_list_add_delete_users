@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './models/User';
+import { Component } from '@angular/core';
 
-import { UsersService } from './users.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
 
 
 @Component({
@@ -11,42 +7,6 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  users$: Observable<User[]> 
-  currentUser: User
-  anotherUser$: Observable<User>
+export class AppComponent {
 
-
-
-  constructor(private usersService: UsersService){
-    
-  }
-
-  ngOnInit(){
-    this.getUsers();
-    this.getUser();
-  }
-
-  getUsers(){
-    this.users$ = this.usersService.getList();
-  }
-
-  getUser(){
-    this.anotherUser$ = this.usersService.getAnotherUser();
-  }
-
-  onSelect(user: User){
-    this.currentUser = user;
-  }
-
-  onDeleteUser(user: User){
-    this.users$ = this.usersService
-      .deleteUser(user)
-      .switchMap(() => this.usersService.getList());
-    this.currentUser = null; 
-  }
-
-  onAddUser(user: User){
-    this.users$ = this.usersService.addUser(user);
-  }
 }

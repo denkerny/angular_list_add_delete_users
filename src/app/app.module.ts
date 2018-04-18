@@ -3,24 +3,26 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { DetailsComponent } from './details/details.component';
-import { UsersService } from './users.service';
-import { AddUserComponent } from './add-user/add-user.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { UsersModule } from './users/users.module';
+import { AppRoutingModule } from './app-routing.module.';
+
+
  
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    DetailsComponent,
-    AddUserComponent
+    NotFoundComponent,
+    NavigationComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    UsersModule
   ],
-  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

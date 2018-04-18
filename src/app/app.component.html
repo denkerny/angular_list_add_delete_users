@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <app-list [list] = "users$ | async" (select)="onSelect($event)"></app-list>
-  <app-details *ngIf="currentUser" [user] = "currentUser" (delete)="onDeleteUser($event)"></app-details>
-  <app-add-user [anotherUser] = "anotherUser$ | async" (addBtn) = "onAddUser($event)"></app-add-user>
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
 </div>
 

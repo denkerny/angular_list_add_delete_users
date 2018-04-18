@@ -1,0 +1,15 @@
+<form #userForm="ngForm" (submit)="$event.preventDefault()">
+  <label for="name">Name: </label>
+  <input type="text" name="name" [(ngModel)]="user.name" #userName="ngModel" required minlength="5"/>
+  <div class="errors" *ngIf="userName.invalid">
+    <div *ngIf="userName.errors.required">this field is required</div>
+    <div *ngIf="userName.errors.minlength">this field hasn't 5 symbols</div>
+  </div>
+  <label for="name">Age: </label>
+  <input type="number" name="age" [(ngModel)]="user.age" #userAge="ngModel" required/>
+  <div class="errors" *ngIf="userAge.invalid">
+    <div *ngIf="userAge.errors.required">this field is required</div>
+  </div>
+  <button (click)="onSaveBtnClick()" [disabled]="userForm.invalid">Save</button>
+  <button (click)="onCancelBtnClick()">Cancel</button>
+</form>
